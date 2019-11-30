@@ -1,78 +1,89 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import React from "react";
+import { Platform } from "react-native";
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-
+import TabBarIcon from "../components/TabBarIcon";
+import QrScannerScreen from "../screens/QrScannerScreen";
+import ServicesScreen from "../screens/ServicesScreen";
+import HackerInfoScreen from "../screens/HackerInfoScreen";
 const config = Platform.select({
-  web: { headerMode: 'screen' },
-  default: {},
+  web: { headerMode: "screen" },
+  default: {}
 });
 
-const HomeStack = createStackNavigator(
+const QrScannerStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    QrScanner: QrScannerScreen
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+QrScannerStack.navigationOptions = {
+  tabBarLabel: "QR Scanner",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+        Platform.OS === "ios"
+          ? `ios-qr-scanner${focused ? "" : "-outline"}`
+          : "md-qr-scanner"
       }
     />
-  ),
+  )
 };
 
-HomeStack.path = '';
+QrScannerStack.path = "";
 
-const LinksStack = createStackNavigator(
+const HackerInfoStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    HackerInfo: HackerInfoScreen
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+HackerInfoStack.navigationOptions = {
+  tabBarLabel: "Hacker Info",
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === "ios"
+          ? `ios-information-circle${focused ? "" : "-outline"}`
+          : "md-information-circle-outline"
+      }
+    />
+  )
 };
 
-LinksStack.path = '';
+HackerInfoStack.path = "";
 
-const SettingsStack = createStackNavigator(
+const ServicesStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Services: ServicesScreen
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ServicesStack.navigationOptions = {
+  tabBarLabel: "HackIT services",
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? `ios-apps` : "md-apps"}
+    />
+  )
 };
 
-SettingsStack.path = '';
+QrScannerStack.path = "";
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  ServicesStack,
+  HackerInfoStack
 });
 
-tabNavigator.path = '';
+tabNavigator.path = "";
 
 export default tabNavigator;
