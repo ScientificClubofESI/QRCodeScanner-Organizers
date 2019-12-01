@@ -5,7 +5,9 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 export default class QrScannerScreen extends React.Component {
   state = {
     hasCameraPermissions: null,
-    scanned: false
+    scanned: false,
+    scannedData: null,
+    ScanningService: ""
   };
   async componentDidMount() {
     this.getPermissionsAsync();
@@ -46,7 +48,13 @@ export default class QrScannerScreen extends React.Component {
     );
   }
   handleBarCodeScanned = ({ type, data }) => {
-    this.setState({ scanned: true });
+    this.setState({
+      scanned: true,
+      scannedData: {
+        type: type,
+        data: data
+      }
+    });
     alert(`Bar code with type ${type} and data : ${data} has been scanned!`);
   };
   cancelScanning = e => {
