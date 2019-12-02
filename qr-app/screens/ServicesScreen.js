@@ -19,11 +19,12 @@ export default class ServicesScreen extends React.Component {
           contentContainerStyle={styles.container}
           scrollEnabled={true}
         >
-          <Service title="Test Service"></Service>
-          <Service title="Test Service"></Service>
-          <Service title="Test Service"></Service>
-          <Service title="Test Service"></Service>
-          <Service title="Test Service"></Service>
+          <Service
+            title="Breakfest"
+            navigation={this.props.navigation}
+          ></Service>
+          <Service navigation={this.props.navigation} title="Lunch"></Service>
+          <Service title="Dinner" navigation={this.props.navigation}></Service>
         </ScrollView>
       </SafeAreaView>
     );
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   topContainer: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight
+    flex: 1
   }
 });

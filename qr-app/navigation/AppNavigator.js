@@ -1,12 +1,14 @@
 import React from "react";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-
-import MainTabNavigator from "./MainTabNavigator";
-
-export default createAppContainer(
-  createSwitchNavigator({
-    // You could add another route here for authentication.
-    // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-    Main: MainTabNavigator
-  })
+import { createAppContainer, createStackNavigator } from "react-navigation";
+import ServicesScreen from "../screens/ServicesScreen";
+import QrScannerScreen from "../screens/QrScannerScreen";
+const AppNavigator = createStackNavigator(
+  {
+    Services: ServicesScreen,
+    QrScanner: QrScannerScreen
+  },
+  {
+    initialRouteName: "Services"
+  }
 );
+export default createAppContainer(AppNavigator);

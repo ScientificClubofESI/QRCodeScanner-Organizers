@@ -10,8 +10,20 @@ export default class QrScannerScreen extends React.Component {
     ScanningService: ""
   };
   async componentDidMount() {
+    this.setState({
+      ScanningService: this.props.navigation.getParam("ScanningService", "")
+    });
     this.getPermissionsAsync();
   }
+  componentWillUnmount() {
+    this.setState({
+      hasCameraPermissions: null,
+      scanned: false,
+      scannedData: null,
+      ScanningService: ""
+    });
+  }
+
   async getPermissionsAsync() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermissions: status == "granted" });
@@ -39,10 +51,13 @@ export default class QrScannerScreen extends React.Component {
           style={StyleSheet.absoluteFillObject}
         ></BarCodeScanner>
         {scanned && (
-          <Button
-            title={"Tap to Scan Again"}
-            onPress={() => this.setState({ scanned: false })}
-          ></Button>
+          <View style={styles.scanAgainContainer}>
+            <Button
+              title={"Tap to Scan Again"}
+              style={styles.scanAgainButton}
+              onPress={() => this.setState({ scanned: false })}
+            ></Button>
+          </View>
         )}
       </View>
     );
@@ -55,17 +70,23 @@ export default class QrScannerScreen extends React.Component {
         data: data
       }
     });
+    console.log(this.state);
+
     alert(`Bar code with type ${type} and data : ${data} has been scanned!`);
   };
   cancelScanning = e => {
     console.log("Scanning Canceled");
   };
 }
-
+QrScannerScreen.navigationOptions = {
+  title: `QR Scanner`
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-end"
-  }
+  },
+  scanAgainContainer: {},
+  scanAgainButton: {}
 });

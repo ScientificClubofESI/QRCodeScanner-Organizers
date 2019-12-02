@@ -22,6 +22,11 @@ export default class Service extends Component {
             ></MaterialCommunityIcons>
           }
           title="Scan QR"
+          onPress={e =>
+            this.props.navigation.navigate("QrScanner", {
+              ScanningService: this.props.title
+            })
+          }
         ></Button>
       </Card>
     );
