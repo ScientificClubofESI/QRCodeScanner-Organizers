@@ -2,6 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import * as Permissions from "expo-permissions";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { LinearGradient } from "expo-linear-gradient";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 export default class QrScannerScreen extends React.Component {
   state = {
     hasCameraPermissions: null,
@@ -9,6 +12,12 @@ export default class QrScannerScreen extends React.Component {
     scannedData: null,
     ScanningService: ""
   };
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: `QR Scanner ${navigation.getParam("ScanningService", "")}`
+    };
+  };
+
   async componentDidMount() {
     this.setState({
       ScanningService: this.props.navigation.getParam("ScanningService", "")
@@ -52,16 +61,41 @@ export default class QrScannerScreen extends React.Component {
         ></BarCodeScanner>
         {scanned && (
           <View style={styles.scanAgainContainer}>
-            <Button
-              title={"Tap to Scan Again"}
-              style={styles.scanAgainButton}
-              onPress={() => this.setState({ scanned: false })}
-            ></Button>
+            <LinearGradient
+              colors={["#2a6bd1", "#4c65e1", "#735aeb", "#9c45ef", "#c512eb"]}
+              start={{ x: 0, y: 0.75 }}
+              end={{ x: 1, y: 0.25 }}
+              style={{
+                padding: 10,
+                alignItems: "center"
+              }}
+            >
+              <TouchableOpacity onPress={this._handleScanAgain}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    color="white"
+                    name="qrcode-scan"
+                    size={26}
+                    style={styles.buttonIcon}
+                  ></MaterialCommunityIcons>
+                  <Text style={styles.text}>Scan Again</Text>
+                </View>
+              </TouchableOpacity>
+            </LinearGradient>
           </View>
         )}
       </View>
     );
   }
+  _handleScanAgain = e => {
+    this.setState({ scanned: false, scannedData: null });
+  };
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({
       scanned: true,
@@ -78,15 +112,20 @@ export default class QrScannerScreen extends React.Component {
     console.log("Scanning Canceled");
   };
 }
-QrScannerScreen.navigationOptions = {
-  title: `QR Scanner`
-};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "flex-end"
   },
-  scanAgainContainer: {},
-  scanAgainButton: {}
+  buttonIcon: {
+    marginRight: 5
+  },
+  text: {
+    color: "white",
+    fontWeight: "bold",
+    fontFamily: "Ubuntu-Medium",
+    fontSize: 15
+  }
 });

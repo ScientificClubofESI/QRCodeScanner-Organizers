@@ -10,11 +10,12 @@ import {
 import Service from "../components/Service";
 import QrScannerScreen from "./QrScannerScreen";
 import Constants from "expo-constants";
+import Wallpaper from "../components/Wallpaper";
 export default class ServicesScreen extends React.Component {
   _openScanner = e => {};
   render() {
     return (
-      <SafeAreaView style={styles.topContainer}>
+      <Wallpaper>
         <ScrollView
           contentContainerStyle={styles.container}
           scrollEnabled={true}
@@ -26,7 +27,7 @@ export default class ServicesScreen extends React.Component {
           <Service navigation={this.props.navigation} title="Lunch"></Service>
           <Service title="Dinner" navigation={this.props.navigation}></Service>
         </ScrollView>
-      </SafeAreaView>
+      </Wallpaper>
     );
   }
 }
