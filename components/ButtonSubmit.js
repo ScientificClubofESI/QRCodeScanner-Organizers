@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Dimensions from "Dimensions";
 import {
   StyleSheet,
@@ -103,21 +102,21 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#F035E0",
-    height: MARGIN,
+    backgroundColor: "#16a085",
+    height: 50,
     borderRadius: 20,
     zIndex: 100
   },
   circle: {
-    height: MARGIN,
-    width: MARGIN,
-    marginTop: -MARGIN,
-    borderWidth: 1,
-    borderColor: "#F035E0",
+    height: 50,
+    width: 50,
+    marginTop: -50,
+    borderWidth: 1, 
+    borderColor: "#16a085",
     borderRadius: 100,
     alignSelf: "center",
     zIndex: 99,
-    backgroundColor: "#F035E0"
+    backgroundColor: "#16a085"
   },
   text: {
     color: "white",

@@ -1,19 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Dimensions from "Dimensions";
 import {
   StyleSheet,
   KeyboardAvoidingView,
-  View,
-  ActivityIndicator,
-  TouchableOpacity,
-  Image
 } from "react-native";
 
 import UserInput from "./UserInput";
 
 import usernameImg from "../assets/images/username.png";
 import passwordImg from "../assets/images/password.png";
+
 export default class Form extends Component {
   constructor(props) {
     super(props);

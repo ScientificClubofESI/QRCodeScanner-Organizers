@@ -18,14 +18,16 @@ export default class ServicesScreen extends React.Component {
       <Wallpaper>
         <ScrollView
           contentContainerStyle={styles.container}
-          scrollEnabled={true}
-        >
+          scrollEnabled={true}>
           <Service
             title="Breakfest"
-            navigation={this.props.navigation}
-          ></Service>
-          <Service navigation={this.props.navigation} title="Lunch"></Service>
-          <Service title="Dinner" navigation={this.props.navigation}></Service>
+            navigation={this.props.navigation}/>
+          <Service 
+            navigation={this.props.navigation} 
+            title="Lunch"/>
+          <Service 
+            title="Dinner" 
+            navigation={this.props.navigation}/>
         </ScrollView>
       </Wallpaper>
     );

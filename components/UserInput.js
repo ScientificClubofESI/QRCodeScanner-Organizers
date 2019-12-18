@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     width: DEVICE_WIDTH - 40,
-    height: 40,
+    height: 50,
     marginHorizontal: 20,
     paddingLeft: 45,
     borderRadius: 20,
@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
     width: 22,
     height: 22,
     left: 35,
-    top: 9,
+    top: 12,
   },
 });
