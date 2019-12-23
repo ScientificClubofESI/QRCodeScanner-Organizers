@@ -102,10 +102,12 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#16a085",
+    backgroundColor: "#6e275e",
     height: 50,
     borderRadius: 20,
-    zIndex: 100
+    zIndex: 100,
+    borderWidth: 2,
+    borderColor: "#fff"
   },
   circle: {
     height: 50,
