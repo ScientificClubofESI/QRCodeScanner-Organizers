@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Dimensions from "Dimensions";
-import login_background from "../assets/images/login_background.jpg"
 import { StyleSheet, ImageBackground, View } from "react-native";
 
+import login_background from "../assets/images/login_background.jpg";
 
 export default class Wallpaper extends Component {
   render() {

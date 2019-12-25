@@ -11,7 +11,7 @@ export default class LoginScreen extends Component {
       <Wallpaper>
         <Logo />
         <Form />
-        <ButtonSubmit navigation={this.props.navigation} />
+        <ButtonSubmit text="Login" onPress={() => this.props.navigation.navigate("Services")} navigation={this.props.navigation} />
       </Wallpaper>
     );
   }

@@ -11,10 +11,12 @@ export default class Service extends Component {
         title={this.props.title}
         titleStyle={styles.titleStyle}
         image={this.props.image}
+        borderRadius={20}
+        dividerStyle={styles.devider}
       >
         <Text>{this.props.description}</Text>
         <LinearGradient
-          colors={["#2a6bd1", "#4c65e1", "#735aeb", "#9c45ef", "#c512eb"]}
+          colors={["#A5206C", "#99206A", "#831F66", "#741F63", "#651F60"]}
           start={{ x: 0, y: 0.75 }}
           end={{ x: 1, y: 0.25 }}
           style={{
@@ -26,7 +28,7 @@ export default class Service extends Component {
           <TouchableOpacity
             style={styles.button}
             onPress={e =>
-              this.props.navigation.navigate("QrScanner", {
+              this.props.navigation.navigate("HackerInfo", {
                 ScanningService: this.props.title
               })
             }
@@ -34,26 +36,38 @@ export default class Service extends Component {
             <View
               style={{
                 flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              <MaterialCommunityIcons
-                color="white"
-                name="qrcode-scan"
-                size={26}
-                style={styles.buttonIcon}
-              ></MaterialCommunityIcons>
-              <Text style={styles.text}>QR Scanner</Text>
+              <View style={styles.buttonIcon}>
+                <MaterialCommunityIcons
+                  color="black"
+                  name="qrcode-scan"
+                  size={26}
+                ></MaterialCommunityIcons>
+              </View>
+              <Text style={styles.text}>Scan Qr Code</Text>
             </View>
           </TouchableOpacity>
         </LinearGradient>
       </Card>
+     
     );
   }
 }
 
 const styles = StyleSheet.create({
+  card: {
+    borderRadius: 20,
+  },
+  devider: {
+    backgroundColor: '#000',
+    height: 3,
+    borderRadius: 10,
+    alignSelf: "center",
+    width: "30%"
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -63,7 +77,9 @@ const styles = StyleSheet.create({
     width: "50%"
   },
   buttonIcon: {
-    marginRight: 5
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    padding: 5
   },
   text: {
     color: "white",

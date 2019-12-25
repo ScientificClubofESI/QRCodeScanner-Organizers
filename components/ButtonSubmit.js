@@ -81,7 +81,7 @@ export default class ButtonSubmit extends Component {
             {this.state.isLoading ? (
               <Image source={spinner} style={styles.image} />
             ) : (
-              <Text style={styles.text}>LOGIN</Text>
+              <Text style={styles.text}>{this.props.text}</Text>
             )}
           </TouchableOpacity>
           <Animated.View
@@ -114,11 +114,11 @@ const styles = StyleSheet.create({
     width: 50,
     marginTop: -50,
     borderWidth: 1, 
-    borderColor: "#16a085",
+    borderColor: "#fff",
     borderRadius: 100,
     alignSelf: "center",
     zIndex: 99,
-    backgroundColor: "#16a085"
+    backgroundColor: "#fff"
   },
   text: {
     color: "white",
