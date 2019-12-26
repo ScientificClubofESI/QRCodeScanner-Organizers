@@ -28,7 +28,7 @@ export default class Service extends Component {
           <TouchableOpacity
             style={styles.button}
             onPress={e =>
-              this.props.navigation.navigate("HackerInfo", {
+              this.props.navigation.navigate("QrScanner", {
                 ScanningService: this.props.title
               })
             }

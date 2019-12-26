@@ -6,12 +6,15 @@ import Wallpaper from "../components/Wallpaper";
 import ButtonSubmit from "../components/ButtonSubmit";
 
 export default class LoginScreen extends Component {
+  _onPress = ()=>{
+    this.props.navigation.navigate("Services");
+  }
   render() {
     return (
       <Wallpaper>
         <Logo />
         <Form />
-        <ButtonSubmit text="Login" onPress={() => this.props.navigation.navigate("Services")} navigation={this.props.navigation} />
+        <ButtonSubmit text="Login" onPress={this._onPress} navigation={this.props.navigation} />
       </Wallpaper>
     );
   }
