@@ -6,23 +6,9 @@ import {StyleSheet, View, TextInput, Image, Text} from 'react-native';
 export default class UserInput extends Component {
   render() {
     return (
-        <View style={styles.container}>
-            <View style={{width: "35%"}}>
-                <Text style={styles.title}>{this.props.title} :</Text>
-            </View>
-            <View style={{width: "65%", justifyContent: "center", alignItems: "flex-start"}}>
-                <TextInput
-                style={styles.input}
-                placeholder={this.props.placeholder}
-                autoCorrect={this.props.autoCorrect}
-                autoCapitalize={this.props.autoCapitalize}
-                returnKeyType={this.props.returnKeyType}
-                placeholderTextColor="#00000080"
-                underlineColorAndroid="transparent"
-                keyboardType={this.props.keyboardType}
-                
-                />
-            </View>
+        <View style={styles.container}> 
+            <Text style={styles.title}>{this.props.title} :</Text>
+            <Text style={styles.input}>{this.props.value}</Text>
         </View>
     )
   }
@@ -36,19 +22,18 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         marginBottom: 15,
-        marginRight: 15,
-        marginLeft: 15,
         flexDirection: "row",
         justifyContent: "flex-start",
+        alignItems: "center"
     },
     title:{
         fontSize: 23
     },
     input: {
-        marginLeft: 5,
-        borderRadius: 20,
         color: '#000',
         fontSize: 16,
-      },
+        marginLeft: 5,
+    },
+    
 });
 

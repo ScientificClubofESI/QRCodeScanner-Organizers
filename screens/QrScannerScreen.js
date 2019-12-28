@@ -5,7 +5,8 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 import { TouchableOpacity } from "react-native";
 import { Overlay, Card } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
-import { MaterialCommunityIcons } from "@expo/vector-icons";    
+import { MaterialCommunityIcons } from "@expo/vector-icons";  
+import HackerInforScreen from "./HackerInfoScreen"  
 export default class QrScannerScreen extends React.Component {
   state = {
     hasCameraPermissions: null,
@@ -61,6 +62,8 @@ export default class QrScannerScreen extends React.Component {
       );
     }
     return (
+      
+      
       <View style={styles.container}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
@@ -68,59 +71,24 @@ export default class QrScannerScreen extends React.Component {
         ></BarCodeScanner>
         {scanned && (
             <Overlay
-              isVisible = {this.state.modalVisible}>
-            <View style={styles.scanAgainContainer}>
-            <Text style={{alignSelf: "center"}}>
-              Hacker OUCHAR had his {this.state.ScanningService}
-            </Text>
-            <Card
-              title='Hacker Info'>
-              <Text>
-                Name : OUCHAR Abdelhak
-              </Text>
-              <Text>
-                Phone : +213 55 55 55 55
-              </Text>
-              <Text>
-                mail : ga_ouchar@esi.dz
-              </Text>
-              <Text>
-                Age : 20 years old
-              </Text>
-            </Card>
-              <LinearGradient
-                colors={["#2a6bd1", "#4c65e1", "#735aeb", "#9c45ef", "#c512eb"]}
-                start={{ x: 0, y: 0.75 }}
-                end={{ x: 1, y: 0.25 }}
-                style={{
-                  padding: 10,
-                  alignItems: "center",
-                  margin: 10
-                }}
-              >
-                <TouchableOpacity onPress={this._handleScanAgain}>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      alignItems: "center"
-                    }}
-                  >
-                    <MaterialCommunityIcons
-                      color="white"
-                      name="qrcode-scan"
-                      size={26}
-                      style={styles.buttonIcon}
-                    ></MaterialCommunityIcons>
-                    <Text style={styles.text}>Scan Again</Text>
-                  </View>
-                </TouchableOpacity>
-              </LinearGradient>
-            </View>
-          </Overlay>
+              isVisible = {this.state.modalVisible}
+              overlayStyle= {styles.overlay}
+              width= "85%">
+              
+              <View style={styles.scanAgainContainer}>
+                <HackerInforScreen 
+                onPress={this._handleScanAgain}
+                service={this.state.ScanningService}
+                />
+             
+              </View>
+            
+            </Overlay>
             
         )}
       </View>
+      
+
     );
   }
   _handleScanAgain = e => {
@@ -148,7 +116,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    backgroundColor: "#00000000"
   },
   buttonIcon: {
     marginRight: 5
@@ -163,6 +132,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flex: 1,
     alignContent: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#00000000"
+  },
+  overlay:{
+    backgroundColor: "#fff",
+    borderRadius: 20,
   }
 });

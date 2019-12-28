@@ -21,10 +21,8 @@ export default class HackerInfoScreen extends Component {
 
   render() {
     return (
-      <Wallpaper>
+      
         <View style={styles.container}>
-
-        
           <Card 
           title="Hacker Info"
           image={this.props.image}
@@ -36,15 +34,15 @@ export default class HackerInfoScreen extends Component {
           <View
           style={{justifyContent: "space-between"}}
           >
-            <CustomInput title="Name" placeholder="Example" keyboardType="default"/>
-            <CustomInput title="Phone" placeholder="+21300000000" keyboardType="phone-pad"/>
-            <CustomInput title="Mail" placeholder="example@mail.com" keyboardType="email-address"/>
-            <CustomInput title="Age" placeholder="20" keyboardType="numeric"/>
+            <CustomInput title="Name" value="OUCHAR Abdelhak"/>
+            <CustomInput title="Phone" value="+213 55 55 55 55"/>
+            <CustomInput title="Mail" value="ga_ouchar@esi.dz"/>
+            <CustomInput title="Age" value="20 years old"/>
           </View>
 
           <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 20, marginBottom: 30}}>
             <ToggleSwitch
-            text={{on: "Had his lunch", off: "Didn't have lunch", activeTextColor: 'white', inactiveTextColor: 'white'}}
+            text={{on: "Had his "+this.props.service, off: "Didn't have "+this.props.service, activeTextColor: 'white', inactiveTextColor: 'white'}}
             textStyle={{fontWeight: 'bold'}}
             color={{ indicator: 'white', active: 'rgba(32, 193, 173, 1)', inactive:  '#f00', activeBorder: 'rgba(32, 193, 173, 1)', inactiveBorder: '#f00'}}
             active={this.state.toggleActivated}
@@ -54,8 +52,6 @@ export default class HackerInfoScreen extends Component {
             onValueChange={() => {this.setState({toggleActivated: !this.state.toggleActivated})}}
             />
         </View>
-
-
 
           <LinearGradient
           colors={["#A5206C", "#99206A", "#831F66", "#741F63", "#651F60"]}
@@ -68,7 +64,7 @@ export default class HackerInfoScreen extends Component {
           }}>
             <TouchableOpacity
             style={styles.button}
-            onPress={this._onPress}>
+            onPress={this.props.onPress}>
               <Text style={styles.text}>Done</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -76,8 +72,6 @@ export default class HackerInfoScreen extends Component {
           </Card>
         </View>
        
-        
-      </Wallpaper>
     );
   }
 }
@@ -94,6 +88,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#00000000"
   },
   devider: {
     backgroundColor: '#000',
@@ -103,10 +98,13 @@ const styles = StyleSheet.create({
     width: "60%"
   },
   cardStyle:{
-    height: "75%",
-    width: "85%",
+    width: "100%",
+    height: "100%",
     alignItems: "stretch",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderColor: "white",
+    borderWidth: 0,
+    elevation: 0
   },
   titleStyle: {
     fontSize: 25,
