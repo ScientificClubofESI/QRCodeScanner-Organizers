@@ -45,7 +45,7 @@ export default class ButtonSubmit extends Component {
     }, 2000);
 
     setTimeout(() => {
-      this.props.navigation.navigate("Services");
+      this.props.onPress();
       this.setState({ isLoading: false });
       this.buttonAnimated.setValue(0);
       this.growAnimated.setValue(0);
@@ -81,7 +81,7 @@ export default class ButtonSubmit extends Component {
             {this.state.isLoading ? (
               <Image source={spinner} style={styles.image} />
             ) : (
-              <Text style={styles.text}>LOGIN</Text>
+              <Text style={styles.text}>{this.props.text}</Text>
             )}
           </TouchableOpacity>
           <Animated.View
@@ -102,21 +102,23 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#16a085",
+    backgroundColor: "#6e275e",
     height: 50,
     borderRadius: 20,
-    zIndex: 100
+    zIndex: 100,
+    borderWidth: 2,
+    borderColor: "#fff"
   },
   circle: {
     height: 50,
     width: 50,
     marginTop: -50,
     borderWidth: 1, 
-    borderColor: "#16a085",
+    borderColor: "#fff",
     borderRadius: 100,
     alignSelf: "center",
     zIndex: 99,
-    backgroundColor: "#16a085"
+    backgroundColor: "#fff"
   },
   text: {
     color: "white",
