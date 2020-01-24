@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Linking, Dimensions, LayoutAnimation, Text, View, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
-import { BarCodeScanner, Permissions } from 'expo';
+import { BarCodeScanner,QRCodeScanner, Permissions } from 'expo';
 
 export default class App extends Component {
   state = {
@@ -19,7 +19,7 @@ export default class App extends Component {
     });
   };
 
-  _handleBarCodeRead = result => {
+  _handleQRCodeRead = result => {
     if (result.data !== this.state.lastScannedUrl) {
       LayoutAnimation.spring();
       this.setState({ lastScannedUrl: result.data });
@@ -36,8 +36,8 @@ export default class App extends Component {
               ? <Text style={{ color: '#fff' }}>
                   Camera permission is not granted
                 </Text>
-              : <BarCodeScanner
-                  onBarCodeRead={this._handleBarCodeRead}
+                :<QRCodeScanner
+                  onQRCodeRead={this._handleQRCodeRead}
                   style={{
                     height: Dimensions.get('window').height,
                     width: Dimensions.get('window').width,
