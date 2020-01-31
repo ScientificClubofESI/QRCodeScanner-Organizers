@@ -8,7 +8,7 @@ export default class App extends Component {
     this.state = {
       //variable to hold the qr value
       qrvalue: '',
-      opneScanner: false,
+      openScanner: false,
     };
   }
   onOpenlink() {
@@ -19,9 +19,9 @@ export default class App extends Component {
   onBarcodeScan(qrvalue) {
     //called after te successful scanning of QRCode/Barcode
     this.setState({ qrvalue: qrvalue });
-    this.setState({ opneScanner: false });
+    this.setState({ openScanner: false });
   }
-  onOpneScanner() {
+  onopenScanner() {
     var that =this;
     //To Start Scanning
     if(Platform.OS === 'android'){
@@ -36,7 +36,7 @@ export default class App extends Component {
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             //If CAMERA Permission is granted
             that.setState({ qrvalue: '' });
-            that.setState({ opneScanner: true });
+            that.setState({ openScanner: true });
           } else {
             alert("CAMERA permission denied");
           }
@@ -49,13 +49,13 @@ export default class App extends Component {
       requestCameraPermission();
     }else{
       that.setState({ qrvalue: '' });
-      that.setState({ opneScanner: true });
+      that.setState({ openScanner: true });
     }    
   }
   render() {
     let displayModal;
     //If qrvalue is set then return this view
-    if (!this.state.opneScanner) {
+    if (!this.state.openScanner) {
       return (
         <View style={styles.container}>
             <Text style={styles.heading}>React Native QR Code Example</Text>
@@ -69,7 +69,7 @@ export default class App extends Component {
               : null
             }
             <TouchableHighlight
-              onPress={() => this.onOpneScanner()}
+              onPress={() => this.onopenScanner()}
               style={styles.button}>
                 <Text style={{ color: '#FFFFFF', fontSize: 12 }}>
                 Open QR Scanner
